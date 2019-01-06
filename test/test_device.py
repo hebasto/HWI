@@ -9,7 +9,7 @@ import time
 import unittest
 
 from bitcoinrpc.authproxy import AuthServiceProxy, JSONRPCException
-from hwilib.commands import process_commands
+from hwilib.cli import process_commands
 
 def start_bitcoind(bitcoind_path):
     datadir = tempfile.mkdtemp()
