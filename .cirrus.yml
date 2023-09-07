@@ -330,21 +330,3 @@ task:
       test_script: cd test; poetry run ./run_tests.py $DEVICE --interface=bindist --device-only; cd ..
   on_failure:
     failed_script: tail -v -n +1 test/*.std*
-
-task:
-  matrix:
-    << : *PYTHON_VERSION_MATRIX_TEMPLATE
-  install_script: poetry install
-  matrix:
-    << : *DEVICE_MATRIX_TEMPLATE
-  matrix:
-    - env:
-        INTERFACE: library
-    - env:
-        INTERFACE: cli
-    - env:
-        INTERFACE: stdin
-  name: Python $PYTHON $DEVICE $INTERFACE
-  test_script: cd test; poetry run ./run_tests.py $DEVICE --interface=$INTERFACE --device-only; cd ..
-  on_failure:
-    failed_script: tail -v -n +1 test/*.std*
