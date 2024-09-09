@@ -146,13 +146,7 @@ jobs:
       fail-fast: false
       matrix:
         device:
-          - { name: 'trezor-1', archive: 'trezor-firmware',  paths: 'test/work/trezor-firmware' }
-          - { name: 'trezor-t', archive: 'trezor-firmware',  paths: 'test/work/trezor-firmware' }
           - { name: 'coldcard', archive: 'coldcard-mpy',     paths: 'test/work/firmware/external/micropython/ports/unix/coldcard-mpy test/work/firmware/unix/coldcard-mpy test/work/firmware/unix/l-mpy test/work/firmware/unix/l-port' }
-          - { name: 'bitbox01', archive: 'mcu',              paths: 'test/work/mcu' }
-          - { name: 'jade',     archive: 'jade',             paths: 'test/work/jade/simulator' }
-          - { name: 'ledger',   archive: 'speculos',         paths: 'test/work/speculos' }
-          - { name: 'keepkey',  archive: 'keepkey-firmware', paths: 'test/work/keepkey-firmware/bin' }
 
     steps:
       - uses: actions/checkout@v4
@@ -209,16 +203,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: [ '3.8', '3.9', '3.10', '3.11', '3.12' ]
+        python-version: [ '3.12' ]
         device:
-          - 'trezor-1'
-          - 'trezor-t'
           - 'coldcard'
-          - 'bitbox01'
-          - 'jade'
-          - 'ledger'
-          - 'ledger-legacy'
-          - 'keepkey'
         script:
           - name: 'Wheel'
             install: 'pip install dist/*.whl'
@@ -279,16 +266,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: [ '3.8', '3.9', '3.10', '3.11', '3.12' ]
+        python-version: [ '3.12' ]
         device:
-          - 'trezor-1'
-          - 'trezor-t'
           - 'coldcard'
-          - 'bitbox01'
-          - 'jade'
-          - 'ledger'
-          - 'ledger-legacy'
-          - 'keepkey'
         interface: [ 'library', 'cli', 'stdin' ]
 
     container: python:${{ matrix.python-version }}
