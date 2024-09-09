@@ -29,6 +29,7 @@ runs:
         tar -xvf coldcard-mpy.tar.gz
         pushd test/work/firmware; git am ../../data/coldcard-multisig.patch; popd
         poetry run pip install -r test/work/firmware/requirements.txt
+        poetry run pip install pysdl2-dll
         pip install -r test/work/firmware/requirements.txt
 
     - if: inputs.device == 'bitbox01'
